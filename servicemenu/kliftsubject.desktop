@@ -1,0 +1,25 @@
+[Desktop Entry]
+Type=Service
+MimeType=image/png;image/jpeg;image/webp;
+Actions=RemoveBg;CopySubject;CreateSticker;
+X-KDE-Submenu=Extraer Sujeto (IA)
+X-KDE-Submenu[es]=Extraer Sujeto (IA)
+Icon=image-png
+
+[Desktop Action RemoveBg]
+Name=Eliminar fondo (guardar PNG)
+Name[es]=Eliminar fondo (guardar PNG)
+Icon=transform-crop
+Exec=kliftsubject --remove-bg %F
+
+[Desktop Action CopySubject]
+Name=Copiar sujeto al portapapeles
+Name[es]=Copiar sujeto al portapapeles
+Icon=edit-copy
+Exec=kliftsubject --copy-subject %f
+
+[Desktop Action CreateSticker]
+Name=Crear sticker con borde blanco
+Name[es]=Crear sticker con borde blanco
+Icon=color-picker
+Exec=kliftsubject --sticker %F
