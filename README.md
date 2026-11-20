@@ -23,15 +23,15 @@ Permite aislar el sujeto principal de cualquier imagen (`PNG`, `JPEG`, `WebP`) m
 ## Compilación e Instalación
 
 ```bash
-cmake -B build -S . -DCMAKE_INSTALL_PREFIX=$HOME/.local -DBUILD_TESTING=ON
+cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr -DBUILD_TESTING=ON
 cmake --build build -j$(nproc)
 ctest --test-dir build --output-on-failure
-cmake --install build
+sudo -n cmake --install build --prefix /usr
 kbuildsycoca6
 ```
 
 El menú de servicio se instala automáticamente con permisos de ejecución (`+x`) en:
-`~/.local/share/kio/servicemenus/kliftsubject.desktop`
+`/usr/share/kio/servicemenus/kliftsubject.desktop`
 
 ## Uso por CLI
 

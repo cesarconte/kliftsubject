@@ -152,11 +152,19 @@ QImage SubjectExtractor::addStickerOutline(const QImage &image, int outlineRadiu
 
 QString SubjectExtractor::resolveRembgExecutable()
 {
+    QString bin = QStandardPaths::findExecutable(QStringLiteral("rembg"));
+    if (!bin.isEmpty()) {
+        return bin;
+    }
+    const QString sysBin = QStringLiteral("/usr/bin/rembg");
+    if (QFileInfo::exists(sysBin) && QFileInfo(sysBin).isExecutable()) {
+        return sysBin;
+    }
     const QString localRembg = QDir::homePath() + QStringLiteral("/.local/bin/rembg");
     if (QFileInfo::exists(localRembg) && QFileInfo(localRembg).isExecutable()) {
         return localRembg;
     }
-    return QStandardPaths::findExecutable(QStringLiteral("rembg"));
+    return QString();
 }
 
 void SubjectExtractor::setRembgExecutable(const QString &executablePath)
